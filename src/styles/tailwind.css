@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* This file imports the base Tailwind styles, components, and utilities*/
+
+
+@layer utilities { 
+  /*This section defines custom Tailwind classes using CSS variables*/
+    .bg-page {
+      background-color: var(--cm-color-bg-page);
+    }
+  
+    .text-heading {
+      color: var(--cm-color-text-heading);
+    }
+  
+    .text-default {
+      color: var(--cm-color-default-black);
+    }
+  
+    .text-muted {
+      color: var(--cm-color-text-muted);
+    }
+  
+    .text-light {
+      color: var(--cm-color-text-light);
+    }
+  
+    .text-gradient {
+      background: var(--cm-color-text-accent-gradient-1);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+}
+  
+/* Tailwind Custom Layer for Components*/
+@layer components {
+  /*This section defines a custom button class btn with various Tailwind utility classes combined.*/
+    .btn {
+      @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800 cursor-pointer;
+    }
+}

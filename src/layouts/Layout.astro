@@ -1,0 +1,54 @@
+---
+import { AstroSeo } from '@astrolib/seo';
+import CustomStyles from '../components/CustomStyles.astro'; 
+import Header from '../components/Header.astro';
+
+
+export interface Props {
+  title: string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const resolvedImageWithDomain = new URL(
+  "/opengraph.png", // Replace with the actual path to your image
+  Astro.site
+).toString();
+
+const { title } = Astro.props;
+
+const makeTitle = title
+  ? title + " | " + "Kleden"
+  : "Kleden - Reimagine your Wardrobe";
+
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> 
+    <AstroSeo 
+      title={makeTitle}
+      description="Kleden Starter Website" 
+      canonical={canonicalURL}
+      openGraph={{
+        url: canonicalURL,
+        type: "website",
+        title: `Kleden - Site`,
+        images: [
+          {
+            url: resolvedImageWithDomain,
+            alt: "Kleden Homepage",
+          }
+        ]
+      }}
+    />
+    <CustomStyles /> 
+  </head>
+  <body>
+   <slot>
+    <Header/>
+   </slot>
+  </body>
+</html>
